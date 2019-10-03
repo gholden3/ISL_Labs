@@ -93,3 +93,43 @@ persp(x,y, fa, theta=30)
 persp(x,y, fa, theta=30, phi=20)
 persp(x,y, fa, theta=30, phi=70)
 persp(x,y, fa, theta=30, phi=40)
+
+A = matrix(1:16, 4, 4)
+A[2,3]
+# select rows 1 and 3 and cols 2 and 4
+A[c(1,3), c(2,4)]
+A[1:3, 2:4]
+A[1:2,]
+A[,1:2]
+# negative sign says to keep all rows or cols except the negated one
+A[-c(1,3),]
+dim(A)
+
+
+# Loading Data
+auto_df = ISLR::Auto
+head(auto_df)
+#fix(auto_df)
+Auto = auto_df
+
+# More graphing and plotting
+plot(Auto$cylinders, Auto$mpg)
+# attach function tells R to make the variables available by name
+attach(Auto)
+plot(cylinders, mpg)
+# as factor converts quantitative variables into qualitative
+cylinders = as.factor(cylinders)
+# if the variable on x axis is catagorical, boxplots will be produced by plot function
+plot(cylinders, mpg)
+plot(cylinders, mpg, col="red")
+plot(cylinders, mpg, col="red", varwidth=T)
+plot(cylinders, mpg, col="red", varwidth=T, horizontal=T )
+plot(cylinders, mpg, col="red", varwidth=T, horizontal=T, xlab="cylinders", ylab="mpg" )
+
+hist(mpg)
+hist(mpg, col=2)
+hist(mpg, col=2, breaks=15)
+
+# pairs function creates a scatterplot matrix
+pairs(Auto)
+pairs(~ mpg + displacement + horsepower + weight + acceleration, Auto)
